@@ -38,7 +38,68 @@
           <h3>Total Price: <span id="totalPrice">$5</span></h3>
         </div>
       </div>
+      <div id="inputContainer">
+        <label for="userInput">Enter your name:</label>
+        <input type="text" id="userInput" placeholder="Enter your name here">
+        <input type="number" id="userInput" placeholder="Enter your age here">
+        <h1>Select Delivery Method</h1>
+
+    <!-- Radio buttons for delivery method options -->
+    <div class="delivery-options">
+        <label>
+            <input type="radio" name="deliveryMethod" value="0" id="eatIn"> Eat In -0$
+        </label>
+        <label>
+            <input type="radio" name="deliveryMethod" value="0" id="pickUp"> Pick Up -0$
+        </label>
+        <label>
+          <input type="radio" name="deliveryMethod" value="5" id="delivery">Delivery -5$
+        </label>
+    </div>
+     <!-- Button to see the order -->
+     <button id="seeOrder">See Order</button>
+
+     <!-- Order Summary -->
+     <div class="order-summary" id="orderSummary"></div>
+    </div>
     </div>
     <script src="script.js"></script>
   </body>
 </html>
+
+
+<!-- Description
+Add customer information and delivery options
+Objective: Enhance the Pancake Maker by including customer details and delivery options to complete the ordering process. This step will involve adding JavaScript functionality to handle new input fields and further refine the user experience.
+
+Your task is to write the JavaScript code that:
+
+Capture customer information:
+
+Include an input field for the customer’s name. 
+Implement delivery method options:
+
+Add a set of radio buttons to choose the delivery method:
+Eat In
+Pick Up
+Delivery (Note: selecting this option adds an additional $5 to the total order cost)
+Listen for changes to the radio button selection and update the total order price accordingly.
+Update the total price dynamically:
+
+Adjust the existing price calculation to account for the delivery charge if the "Delivery" option is selected.
+Ensure the updated price is displayed dynamically in the #totalPrice span.
+Display the current order with selected choices:
+
+Implement a button labeled "See Order" that, when clicked, displays a summary of the current selections including:
+Customer Name
+Selected Pancake Type, Toppings, and Extras
+Chosen Delivery Method
+Total Price (including any delivery charges)
+Stores Orders in an Array:
+
+Maintain an array to store each order. This array should include:
+The customer’s name
+Selected pancake details
+Chosen delivery method
+Total cost
+Ensure that any changes or edits to the order update the corresponding entry in the array. -->
