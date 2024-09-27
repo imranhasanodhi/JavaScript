@@ -44,6 +44,8 @@ document.getElementById('carForm').addEventListener('submit', function(event){
 
          // Display the updated car collection in the table
         displayCarTable();
+          // Clear the form after submission
+        document.getElementById('carForm').reset();
 
 
 })
@@ -85,6 +87,68 @@ function displayCarTable(){
         tableBody.appendChild(row)
     })
 }
+
+
+// Function to search a car by license plate
+document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+   // Get the search input value
+   const searchLicensePlate = document.getElementById('searchLicensePlate').value.trim();
+
+   // Search for the car in the carCollection array
+   const foundCar = carCollection.find(car => car.licensePlate === searchLicensePlate);
+
+   // Display the result
+   const searchResultsDiv = document.getElementById('searchResults');
+   searchResultsDiv.innerHTML = ''; // Clear previous results
+
+   // Create a table for search results
+   const resultsTable = document.createElement('table');
+   resultsTable.style.width = '100%';
+   resultsTable.style.borderCollapse = 'collapse';
+
+   // Create table header
+   const thead = document.createElement('thead');
+   thead.innerHTML = `
+       <tr>
+           <th>License Plate</th>
+           <th>Maker</th>
+           <th>Model</th>
+           <th>Current Owner</th>
+           <th>Price</th>
+           <th>Color</th>
+       </tr>
+   `;
+   resultsTable.appendChild(thead);
+
+   // Create table body
+   const tbody = document.createElement('tbody');
+
+   if (foundCar) {
+       // If the car is found, display its details
+       const row = document.createElement('tr');
+       row.innerHTML = `
+           <td>${foundCar.licensePlate}</td>
+           <td>${foundCar.maker}</td>
+           <td>${foundCar.model}</td>
+           <td>${foundCar.currentOwner}</td>
+           <td>€${foundCar.price}</td>
+           <td>${foundCar.color}</td>
+       `;
+       tbody.appendChild(row);
+       resultsTable.appendChild(tbody);
+
+       // Add a heading above the results table
+       searchResultsDiv.innerHTML = '<h1>Here Is Your Search Result:</h1>';
+   } else {
+       // If the car is not found, show an error message
+       searchResultsDiv.innerHTML = '<h1>No car found with that license plate.</h1>';
+   }
+
+   // Append the results table to the search results div
+   searchResultsDiv.appendChild(resultsTable); 
+});
 
 // 3. **Create and Store Car Objects:**
 
