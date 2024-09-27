@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <div class="container">
-        <!-- Search Form at the top -->
+        
         <div class="search-container">
             <form id="searchForm">
                 <input type="text" id="searchLicensePlate" placeholder="Enter License Plate" />
@@ -17,7 +16,8 @@
             </form>
         </div>
 
-        <div class="form-table-container">
+        <div class="form-table-display-container">
+            
             <div class="form-container">
                 <h1>Enter Car Details</h1>
                 <form id="carForm">
@@ -33,13 +33,13 @@
                     <input type="number" id="price" name="price" required>
                     <label for="color">Color:</label>
                     <input type="text" id="color" name="color" required>
-                    <!-- <label for="year">Year</label>
-                    <input type="text" id="year" name="year" required> -->
+                    <label for="year">Year:</label>
+                    <input type="text" id="year" name="year" required>
                     <button type="submit">Submit</button>
                 </form>
             </div>
 
-            <!-- Container for table on the right -->
+            
             <div class="table-container">
                 <h2>Car Collection</h2>
                 <table border="1" id="carTable">
@@ -51,20 +51,25 @@
                             <th>Current Owner</th>
                             <th>Price</th>
                             <th>Color</th>
+                            <th>Year</th>
+                            <th>Discount</th>
                         </tr>
                     </thead>
                     <tbody id="carTableBody">
-                        <!--data added here dynamically by JavaScript-->
+                        <!-- Data dynamically added by JavaScript -->
                     </tbody>
                 </table>
+            </div>
+
+            
+            <div id="searchResults" class="searchResults">
+                <!-- Search results will appear here dynamically -->
             </div>
         </div>
     </div>
 
-    <!-- To display search results -->
-    <div id="searchResults">
-        <h1>Display Result</h1>
-    </div>
+
+    <div id="formError" class="error-container"></div>
 
     <script src="script.js"></script>
 </body>

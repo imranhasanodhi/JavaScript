@@ -1,7 +1,7 @@
 .container {
-    display: flex; /* Use flexbox to arrange children in a row */
+    display: flex; 
     flex-direction: column;
-    gap: 10px; /* Adds space between the form container and the table container */
+    gap: 10px; 
     background: #bb98d2;
   
     padding-left: 10px;
@@ -9,36 +9,45 @@
 }
 .search-container {
     display: flex;
-    justify-content: flex-start; /* Align search form to the left */
+    justify-content: flex-start; 
     justify-content: center;
     background: #1d6850;
     padding: 15px;
 }
-.form-table-container {
-    display: flex; /* Align form and table side by side */
-    gap: 100px; /* Space between the form and the table */
+.form-table-display-container {
+    display: flex; 
+    gap: 20px; 
 }
 .form-container {
     display: flex;
-    flex-direction: column; /* Stack the heading and form vertically */
-    align-items: flex-start; /* Align items to the left */
+    flex-direction: column; 
+    align-items: flex-start; 
 }
 
 .table-container {
     display: flex;
-    flex-direction: column; /* Stack the table heading and table vertically */
-    align-items: flex-start; /* Align items to the left */
+    flex-direction: column; 
+    align-items: flex-start; 
     margin-top: 15px;
 }
 
-/* Adjust heading and form styling as needed */
+.searchResults{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+
+
 h1 {
-    margin: 0; /* Remove default margin to control spacing */
+    margin: 0;
     margin-bottom: 10px;
-    font-size: larger; /* Adjust font size (e.g., 2.5em for larger text) */
-    font-weight: bold; /* Make text bold */
-    color: #35848d; /* Optional: Change color for better contrast */
-    text-align: left; /* Optional: Align text to the left */
+    font-size: larger; 
+    font-weight: bold; 
+    color: #774d0e; 
+    text-align: left; 
     
     
 
@@ -47,8 +56,8 @@ h1 {
 #carForm {
     display: flex;
     align-items: flex-start;
-    flex-direction: column; /* Stack form elements vertically */
-    margin: 0; /* Remove any margin from the form */
+    flex-direction: column; 
+    margin: 0; 
 
 }
 
@@ -58,9 +67,9 @@ h1 {
 }
 
 #carForm input {
-    padding: 10px; /* Increase padding for better aesthetics */
-    width: 300px; /* Keep the same width */
-    height: 15px; /* Set a consistent height */
+    padding: 10px; 
+    width: 300px; 
+    height: 15px; 
     margin-bottom: 5px;
 }
 
@@ -73,31 +82,30 @@ h1 {
     color: white;
     border: none;
     cursor: pointer;
-    margin: 10px 0; /* Small margin above and below button */
+    margin: 10px 0;
 }
 
 #carForm br {
-    display: none; /* Hide line breaks to prevent gaps */
+    display: none; 
 }
-/* General table styling */
+
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 30px; /* Adds space between table and search bar */
+    margin-bottom: 30px; 
 }
 
 table th, table td {
-    height: 15px; /* Set the same height for table cells */
-    padding: 10px; /* Keep padding for table cells */
+    height: 15px; 
+    padding: 10px; 
     text-align: left;
 }
 
-/* Style for the Search form */
 #searchForm {
-    margin-top: 10px; /* Adds space above the search form */
+    margin-top: 10px; 
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between input and button */
+    gap: 10px; 
 }
 
 #searchForm input {
@@ -113,29 +121,40 @@ table th, table td {
     cursor: pointer;
 }
 .results-container{
-    margin-top: 10px; /* Adds space above the search form */
+    margin-top: 10px; 
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between input and button */
+    gap: 0px;
     background: #3d3333;
 }
-/* General table styling */
+
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px; /* Adds space between the heading and the table */
+    margin-top: 10px; 
 }
 
 table th, table td {
     
-    border: 1px solid black; /* Add border to table cells */
-    padding: 10px; /* Keep padding for table cells */
-    text-align: left; /* Align text to the left */
+    border: 1px solid black; 
+    padding: 10px; 
+    text-align: left; 
+}
+.searchResults {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 44px;
+    padding: 0px;
+   
 }
 
-/* Style for the Search Results heading */
+.searchResults h1 {
+    color: #0c7561;  
+}
+
 #searchResults h1 {
-    margin-bottom: 10px; /* Adds space below the heading */
+    margin-bottom: 10px; 
 }
 #searchresult{
     background-color: #6a18a0;

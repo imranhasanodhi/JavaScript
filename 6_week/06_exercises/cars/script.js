@@ -5,13 +5,14 @@
 //    - Define a `Car` class with properties for the car's license plate, maker, model, current owner, price, and color.
 
 class car {
-    constructor(licensePlate, maker, model, currentOwner, price, color){
+    constructor(licensePlate, maker, model, currentOwner, price, color, year, ){
         this.licensePlate = licensePlate;
         this.maker = maker;
         this.model = model;
         this.currentOwner = currentOwner;
         this.price = price;
         this.color = color;
+        this.year = year;
     }
 
 }
@@ -25,31 +26,84 @@ let carCollection = [];
 //    - Use JavaScript to collect the values entered by the user when the form is submitted.
 
 document.getElementById('carForm').addEventListener('submit', function(event){
-    event.preventDefault() // Prevent the form from submitting the traditional way
+    event.preventDefault() 
+    const errorDiv = document.getElementById('formError');
+    errorDiv.innerHTML = '';  // Clear any previous error messages
+
+    try {
         // Collect values from the form
-        const licensePlate = document.getElementById('licensePlate').value;
-        const maker = document.getElementById('maker').value;
-        const model = document.getElementById('model').value;
-        const currentOwner = document.getElementById('currentOwner').value
-        const price = document.getElementById('price').value
-        const color = document.getElementById('color').value
+        const licensePlate = document.getElementById('licensePlate').value.trim();
+        const maker = document.getElementById('maker').value.trim();
+        const model = document.getElementById('model').value.trim();
+        const currentOwner = document.getElementById('currentOwner').value.trim();
+        const price = parseFloat(document.getElementById('price').value.trim());
+        const color = document.getElementById('color').value.trim();
+        const year = parseInt(document.getElementById('year').value.trim());
 
-        // Create a new Car object using the collected value
-        const newCar = new car(licensePlate, maker, model, currentOwner, price, color)
-        //show collected value from html form to console by javascript
-        console.log(newCar);
+        // Get the current year for validation
+        const currentYear = new Date().getFullYear();
 
-        // Add the new car value to carCollection array for store data.
-        carCollection.push(newCar); // pushing value to array.
+        // Validation checks using try-catch
+        if (!licensePlate) {
+            throw new Error('License plate can not be empty.');
+        }
+        if (!maker) {
+            throw new Error('Maker field can not be empty.');
+        }
+        if (!model) {
+            throw new Error('Model field can not be empty');
+        }
+        if (!currentOwner) {
+            throw new Error('Current owner field can not be empty.');
+        }
+        if (isNaN(price) || price <= 0) {
+            throw new Error('Price must be a positive number.');
+        }
+        if (!color) {
+            throw new Error('Color field csn not be empty');
+        }
+        if (isNaN(year) || year < 1886 || year > currentYear) {
+            throw new Error(`Year must be a number between 1886 and ${currentYear}.`);
+        }
+      
 
-         // Display the updated car collection in the table
+        // Create a new Car object using the collected values
+        const newCar = new car(licensePlate, maker, model, currentOwner, price, color, year);
+
+        // Add the new car to the carCollection array
+        carCollection.push(newCar);
+
+        // Display the updated car collection in the table
         displayCarTable();
-          // Clear the form after submission
+
+        // Clear the form after submission
         document.getElementById('carForm').reset();
 
+    } catch (error) {
+        // Catch any error and display it to the user
+        showError(error.message);
+        alert(error)  // for alerting error message in the comand promt
+    } 
 
 })
 
+
+
+// Function to display error message
+function showError(message) {
+    const errorDiv = document.getElementById('formError');
+    errorDiv.innerHTML = `${message}`;
+}
+
+// function calculateDiscountprice() {
+//     const age = currentYear - this.year;
+
+//     if (age > 10) {
+//         return this.price * .85; 
+//     }else{
+//     return this.price; 
+//     }
+// }
 //Function to display car collection to the table
 function displayCarTable(){
     const tableBody = document.getElementById('carTableBody')
@@ -82,6 +136,13 @@ function displayCarTable(){
         const colorCell = document.createElement('td');
         colorCell.textContent = car.color;
         row.appendChild(colorCell);
+
+        const yearCell = document.createElement('td');
+        yearCell.textContent = car.year;
+        row.appendChild(yearCell); 
+        const discountCell = document.createComment('td')
+        discountCell.textContent = car.discount;
+        row.appendChild(discountCell);
 
         // Append the row to the table body
         tableBody.appendChild(row)
@@ -118,6 +179,7 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
            <th>Current Owner</th>
            <th>Price</th>
            <th>Color</th>
+           <th>Year</th>
        </tr>
    `;
    resultsTable.appendChild(thead);
@@ -135,6 +197,7 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
            <td>${foundCar.currentOwner}</td>
            <td>€${foundCar.price}</td>
            <td>${foundCar.color}</td>
+           <td>${foundCar.year}</td>
        `;
        tbody.appendChild(row);
        resultsTable.appendChild(tbody);
